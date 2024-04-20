@@ -7,7 +7,12 @@ jobs:
     steps:
       - name: Load the repo
         uses: actions/checkout@v4
-      - name: Install dependencies
-        run: npm install
-      - name: Package project
-        run: npm run build
+      - name: Install dependencies and package project
+        run: |
+          npm install
+          npm run build
+      - name: Deployment
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: build
